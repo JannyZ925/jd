@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "jd",
   "description": "taro3仿京东",
-  "appid": "touristappid",
+  "appid": "wx5058ed0be5d58e3f",
   "setting": {
     "urlCheck": true,
     "es6": false,
