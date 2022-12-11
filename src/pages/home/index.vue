@@ -1,17 +1,17 @@
 <template>
-  <div>{{title}}</div>
+	<block>
+		<block>{{ title }}</block>
+	</block>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      title: '首页'
-    }
-  }
+	data() {
+		return {
+			title: '首页',
+		}
+	},
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
