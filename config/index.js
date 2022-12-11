@@ -47,6 +47,9 @@ const config = {
     }
   },
   h5: {
+    router: {
+      mode: 'browser',
+    },
     publicPath: '/',
     staticDirectory: 'static',
     postcss: {
