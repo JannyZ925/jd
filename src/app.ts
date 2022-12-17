@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import './app.less'
+import './request'
 
 const App = {
   render(h) {
