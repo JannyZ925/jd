@@ -5,6 +5,14 @@ export default defineAppConfig({
     'pages/cart/index',
     'pages/my/index'
   ],
+  subpackages: [
+    {
+      root: "pages/subpkg",
+      pages: [
+        "category/index"
+      ]
+    }
+  ],
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',

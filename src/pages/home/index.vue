@@ -1,12 +1,7 @@
 <template>
   <view>
     <!-- 轮播图区域 -->
-    <swiper
-      :indicator-dots="true"
-      :autoplay="true"
-      :circular="true"
-      :interval="3000"
-    >
+    <swiper :indicator-dots="true" :autoplay="true" :circular="true" :interval="3000">
       <swiper-item v-for="(item, index) in bannerList" :key="item.goodsId">
         <image :src="item.imageUrl" />
       </swiper-item>
@@ -14,7 +9,7 @@
 
     <!-- 分类导航区域 -->
     <view class="menu-list">
-      <view class="menu-item" v-for="(item, index) in menuList" :key="item.id">
+      <view class="menu-item" v-for="(item, index) in menuList" :key="item.id" @tap="clickMenuItemHandler(item)">
         <image :src="item.imageUrl"></image>
       </view>
     </view>
@@ -28,26 +23,12 @@
         <view class="floor-img-box">
           <!-- 左边大盒子 -->
           <view class="left-img-box">
-            <image
-              :src="floor.productList[0].imageUrl"
-              :style="{ width: floor.productList[0].imageWidth/2 + 'px' }"
-              mode="widthFix"
-            >
-            </image>
+            <image :src="floor.productList[0].imageUrl" :style="{ width: floor.productList[0].imageWidth / 2 + 'px' }" mode="widthFix"/>
           </view>
           <!-- 右边四个小盒子 -->
           <view class="right-img-box">
-            <view
-              v-for="(product, index) in floor.productList"
-              :key="index"
-              v-show="index !== 0"
-            >
-              <image
-                :src="product.imageUrl"
-                :style="{ width: product.imageWidth/2 + 'px' }"
-                mode="widthFix"
-              >
-              </image>
+            <view v-for="(product, index) in floor.productList" :key="index" v-show="index !== 0">
+              <image :src="product.imageUrl" :style="{ width: product.imageWidth / 2 + 'px' }" mode="widthFix"/>
             </view>
           </view>
         </view>
@@ -89,6 +70,14 @@ export default {
     getFloorList() {
       // 发起请求，获取瀑布流数据
       return request("/home/floorList");
+    },
+
+    // 点击分类导航项的事件
+    clickMenuItemHandler(item) {
+      // 如果点击的是“分类”导航，则跳转到分类页面
+      if (item.title === "分类") {
+        Taro.navigateTo({ url: "/pages/subpkg/category/index" });
+      }
     },
   },
 
