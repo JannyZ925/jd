@@ -17,7 +17,7 @@
         </view>
         <!-- 三级分类 -->
         <view class="category-level3-list">
-          <view class="category-level3" v-for="(c3, index3) in c2.children" :key="c3.catId">
+          <view class="category-level3" v-for="(c3, index3) in c2.children" :key="c3.catId" @tap="clickCategoryHandler(c3.catId)">
             <image class="category-level3-img" :src="c3.catImage" />
             <text class="category-level3-name">{{ c3.catName }}</text>
           </view>
@@ -53,6 +53,12 @@ export default {
       this.active = index;
       // 修改二级分类数据
       this.categoryLevel2 = this.categoryList[index].children
+    },
+    // 点击三级分类事件
+    clickCategoryHandler(cid) {
+      Taro.navigateTo({
+        url: `../goodsList/index?cid=${cid}`
+      })
     }
   },
   mounted() {

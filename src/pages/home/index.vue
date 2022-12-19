@@ -1,7 +1,12 @@
 <template>
   <view>
     <!-- 轮播图区域 -->
-    <swiper :indicator-dots="true" :autoplay="true" :circular="true" :interval="3000">
+    <swiper
+      :indicator-dots="true"
+      :autoplay="true"
+      :circular="true"
+      :interval="3000"
+    >
       <swiper-item v-for="(item, index) in bannerList" :key="item.goodsId">
         <image :src="item.imageUrl" />
       </swiper-item>
@@ -9,7 +14,12 @@
 
     <!-- 分类导航区域 -->
     <view class="menu-list">
-      <view class="menu-item" v-for="(item, index) in menuList" :key="item.id" @tap="clickMenuItemHandler(item)">
+      <view
+        class="menu-item"
+        v-for="(item, index) in menuList"
+        :key="item.id"
+        @tap="clickMenuItemHandler(item)"
+      >
         <image :src="item.imageUrl"></image>
       </view>
     </view>
@@ -22,14 +32,27 @@
         <!-- 商品列表 -->
         <view class="floor-img-box">
           <!-- 左边大盒子 -->
-          <view class="left-img-box">
-            <image :src="floor.productList[0].imageUrl" :style="{ width: floor.productList[0].imageWidth / 2 + 'px' }" mode="widthFix"/>
-          </view>
+          <navigator class="left-img-box" :url="floor.productList[0].link">
+            <image
+              :src="floor.productList[0].imageUrl"
+              :style="{ width: floor.productList[0].imageWidth / 2 + 'px' }"
+              mode="widthFix"
+            />
+          </navigator>
           <!-- 右边四个小盒子 -->
           <view class="right-img-box">
-            <view v-for="(product, index) in floor.productList" :key="index" v-show="index !== 0">
-              <image :src="product.imageUrl" :style="{ width: product.imageWidth / 2 + 'px' }" mode="widthFix"/>
-            </view>
+            <navigator
+              v-for="(product, index) in floor.productList"
+              :key="index"
+              v-show="index !== 0"
+              :url="product.link"
+            >
+              <image
+                :src="product.imageUrl"
+                :style="{ width: product.imageWidth / 2 + 'px' }"
+                mode="widthFix"
+              />
+            </navigator>
           </view>
         </view>
       </view>
