@@ -6,8 +6,8 @@ export default {
         return {
             // 商品列表
             goodsList: [],
-            // 默认图片
-            defaultImage: "https://lexmin.oss-cn-hangzhou.aliyuncs.com/apis/service-data/goods/defaultImage.gif",
+            // // 默认图片
+            // defaultImage: "https://lexmin.oss-cn-hangzhou.aliyuncs.com/apis/service-data/goods/defaultImage.gif",
             // 参数对象
             queryObj: {
                 // 分类id

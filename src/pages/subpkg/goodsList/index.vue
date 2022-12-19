@@ -1,13 +1,7 @@
 <template>
-  <view style="min-height: 100vh">
-    <view class="goods-item" v-for="(goods, index) in goodsList" :key="goods.goodsId">
-      <view class="goods-img">
-        <image :src="goods.goodsSmallLogo || defaultImage" />
-      </view>
-      <view class="goods-info">
-        <text class="goods-name">{{ goods.goodsName }}</text>
-        <text class="goods-price">￥{{ goods.goodsPrice }}</text>
-      </view>
+  <view>
+    <view style="min-height: 100vh">
+      <goods-item v-for="(goods, index) in goodsList" :key="goods.goodsId" :goods="goods"></goods-item>
     </view>
     <view class="tips" v-if="showTips">我是有底线的~</view>
   </view>
@@ -18,8 +12,9 @@ import "./index.less";
 import mixin from '../../../mixin/index'
 
 export default {
+  
   mixins: [mixin],
- 
+
   async onLoad(options) {
     // 获取页面的参数
     this.queryObj.cid = options.cid || "";
