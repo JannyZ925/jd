@@ -1,11 +1,12 @@
 import Taro from '@tarojs/taro'
 
-export const request = (url, method) => {
+export const request = (url, method, data) => {
     const defaultMethod = "GET"
     return new Promise((resolve, reject) =>
         Taro.request({
             url,
             method: method || defaultMethod,
+            data,
             success: (res) => {
                 resolve(res.data.data);
             },
