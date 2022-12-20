@@ -2,6 +2,8 @@ import Vue from 'vue'
 import './app.less'
 import './request'
 
+import 'taro-ui/dist/style/index.scss'
+
 // 注册全局组件goods-item
 import GoodsItem from './components/goodsItem/index.vue';
 Vue.component('goods-item', GoodsItem)
