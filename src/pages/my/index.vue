@@ -11,6 +11,9 @@ import './index.less'
 import { AtButton } from 'taro-ui-vue'
 
 export default {
+  components: {
+    AtButton,
+  },
   data () {
     return {
       msg: '我的'
