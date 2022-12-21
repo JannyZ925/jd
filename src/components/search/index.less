@@ -1,0 +1,23 @@
+@import '../../styles/variables.less';
+
+.search-container {
+  background-color: @primaryColor;
+  padding: 20px;
+  // 让search组件一直显示在页面最上方
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  .search-input {
+    height: 80px;
+    background-color: white;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .search-placeholder {
+      margin-left: 20px;
+    }
+  }
+}
