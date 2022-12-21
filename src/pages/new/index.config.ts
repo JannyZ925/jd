@@ -1,3 +1,4 @@
 export default definePageConfig({
-  navigationBarTitleText: '新品'
+  navigationBarTitleText: '新品',
+  enablePullDownRefresh: true
 })
