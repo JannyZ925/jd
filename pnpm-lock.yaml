@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@babel/core': ^7.8.0
   '@babel/runtime': ^7.7.7
-  '@lexmin0412/taro-ui-vue': 2.0.0-beta.0
+  '@lexmin0412/taro-ui-vue': 2.0.0-beta.1
   '@tarojs/cli': 3.5.10
   '@tarojs/components': 3.5.10
   '@tarojs/helper': 3.5.10
@@ -34,7 +34,6 @@ specifiers:
   style-loader: 1.3.0
   stylelint: ^14.4.0
   taro-ui: ^3.1.0-beta.4
-  taro-ui-vue: ^1.0.0-beta.16
   typescript: ^4.1.0
   vue: ^2.5.0
   vue-loader: ^15.9.2
@@ -43,7 +42,7 @@ specifiers:
 
 dependencies:
   '@babel/runtime': 7.20.1
-  '@lexmin0412/taro-ui-vue': 2.0.0-beta.0
+  '@lexmin0412/taro-ui-vue': 2.0.0-beta.1
   '@tarojs/components': 3.5.10_vue@2.7.13
   '@tarojs/helper': 3.5.10
   '@tarojs/plugin-framework-vue2': 3.5.10_vue@2.7.13
@@ -60,7 +59,6 @@ dependencies:
   '@tarojs/taro-h5': 3.5.10_vue@2.7.13
   axios: 1.2.1
   taro-ui: 3.1.0-beta.4_@tarojs+components@3.5.10
-  taro-ui-vue: 1.0.0-beta.16
   vue: 2.7.13
   vue-template-compiler: 2.7.13
 
@@ -1557,8 +1555,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
 
-  /@lexmin0412/taro-ui-vue/2.0.0-beta.0:
-    resolution: {integrity: sha512-NhajN7PPaGqfz6mLIyCvpgpqrYoFwQ43GBXviXkd+THniS4/uBWTbIKwDZsPYRbjGulHRyVltiJ0/bcWP6/zfA==}
+  /@lexmin0412/taro-ui-vue/2.0.0-beta.1:
+    resolution: {integrity: sha512-gwdSbgVX3zruxdEsJOfjcrLqbc5g1kWDZ6E9Sr2J9O6T27FkXlarCkjj0DwZm19zwWWNMc6lDXvMEcSrQaGNQA==}
     dependencies:
       classnames: 2.3.2
       dayjs: 1.11.7
@@ -1680,7 +1678,6 @@ packages:
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
     requiresBuild: true
     optional: true
 
@@ -1689,7 +1686,6 @@ packages:
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
     requiresBuild: true
     optional: true
 
@@ -1698,7 +1694,6 @@ packages:
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
     requiresBuild: true
     optional: true
 
@@ -1707,7 +1702,6 @@ packages:
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
     requiresBuild: true
     optional: true
 
@@ -9249,7 +9243,6 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -9259,7 +9252,6 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -9269,7 +9261,6 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -9279,7 +9270,6 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -13296,16 +13286,6 @@ packages:
       css-mediaquery: 0.1.2
       postcss-value-parser: 3.3.1
     dev: true
-
-  /taro-ui-vue/1.0.0-beta.16:
-    resolution: {integrity: sha512-2IcvgdWnsuisrniodQCfmVm2qQv8GlFICUV6ylP6nI37QKFPT6UV4NsPRDmDAIYcb5BJAmY5niSFYRg2Nr1TFA==}
-    dependencies:
-      classnames: 2.3.2
-      dayjs: 1.11.7
-      lodash: 4.17.20
-      vue: 2.7.13
-      vue-class-component: 7.2.6_vue@2.7.13
-    dev: false
 
   /taro-ui/3.1.0-beta.4_@tarojs+components@3.5.10:
     resolution: {integrity: sha512-8VqX2AI2xTHR1Hw28ZzYB61Hw1cVDcSLj0IBtzdF1aWOkl/5VeFPJsCwndajBhEe+mAMKcmEFMvpBDbz3ejCqg==}
