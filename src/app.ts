@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import TaroUIVue from '@lexmin0412/taro-ui-vue'
+import TaroUIVue from '@lexmin0412/taro-ui-vue/src/index'
 import './app.less'
 import './request'
 
