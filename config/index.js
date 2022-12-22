@@ -1,6 +1,6 @@
 import * as path from 'path'
 
-const TARO_UI_VUE_ENTRY = path.resolve(__dirname, '..', 'node_modules', 'taro-ui-vue', 'dist', 'index.js')
+const TARO_UI_VUE_ENTRY = path.resolve(__dirname, '..', 'node_modules', '@lexmin0412', 'taro-ui-vue', 'dist', 'index.js')
 
 const config = {
   projectName: 'jd',
@@ -31,6 +31,11 @@ const config = {
     'taro-ui-vue': TARO_UI_VUE_ENTRY  // 修改 taro-ui-vue的入口为 node_modules/taro-ui-vue/dist/index.js
   },
   mini: {
+    // compile: {
+    //   include: [
+    //     modulePath => modulePath.indexOf('taro-ui-vue') >= 0
+    //   ]
+    // },
     postcss: {
       pxtransform: {
         enable: true,
