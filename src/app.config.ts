@@ -10,7 +10,8 @@ export default defineAppConfig({
       root: "pages/subpkg",
       pages: [
         "category/index",
-        "goodsList/index"
+        "goodsList/index",
+        "search/index"
       ]
     }
   ],

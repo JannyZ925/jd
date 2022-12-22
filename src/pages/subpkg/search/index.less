@@ -1,0 +1,44 @@
+@import '../../../components/search/index.less';
+
+
+.search-history-container {
+    padding: 20px;
+
+    .search-history-title {
+        display: flex;
+        justify-content: space-between;
+
+        text, .at-icon-trash {
+            font-size: 32px;
+        }
+    }
+
+    .search-history-list {
+        margin-top: 20px;
+
+        .search-history-item {
+            margin-right: 10px;
+        }
+    }
+}
+
+.search-results-container {
+    display: flex;
+    flex-direction: column;
+
+    .search-results-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e1e1e1;
+        padding: 20px;
+
+        .goods-name {
+            font-size: 30px;
+            // 以下三行的作用是当一条搜索结果在一行放不下时用省略号代替
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+}
