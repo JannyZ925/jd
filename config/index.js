@@ -1,7 +1,5 @@
 import * as path from 'path'
 
-const TARO_UI_VUE_ENTRY = path.resolve(__dirname, '..', 'node_modules', '@lexmin0412', 'taro-ui-vue', 'dist', 'index.js')
-
 const config = {
   projectName: 'jd',
   date: '2022-11-5',
@@ -23,19 +21,19 @@ const config = {
     }
   },
   framework: 'vue',
-  compiler: 'webpack5',
   cache: {
     enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
   },
   alias: {
-    'taro-ui-vue': TARO_UI_VUE_ENTRY  // 修改 taro-ui-vue的入口为 node_modules/taro-ui-vue/dist/index.js
+    // 'taro-ui-vue': TARO_UI_VUE_ENTRY  // 修改 taro-ui-vue的入口为 node_modules/taro-ui-vue/dist/index.js
+  },
+  compiler: {
+    type: 'webpack5',
+    prebundle: {
+      enable: false
+    }
   },
   mini: {
-    // compile: {
-    //   include: [
-    //     modulePath => modulePath.indexOf('taro-ui-vue') >= 0
-    //   ]
-    // },
     postcss: {
       pxtransform: {
         enable: true,
