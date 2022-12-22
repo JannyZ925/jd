@@ -1,29 +1,34 @@
 <template>
-  <view class="scroll-view-container">
-    <!-- 左侧滚动视图区域 -->
-    <scroll-view class="left-scroll-view" scroll-y="true">
-      <!-- 一级分类 -->
-      <view :class="['category-level1', active === index1 ? 'active' : '']" v-for="(c1, index1) in categoryList" :key="c1.catId" @tap="changeCategory(index1)">
-        {{c1.catName}}
-      </view>
-    </scroll-view>
+  <view class="category">
+    <!-- search组件 -->
+    <search></search>
 
-    <!-- 右侧滚动视图区域 -->
-    <scroll-view class="right-scroll-view" scroll-y="true">
-      <!-- 二级分类，如果该二级分类有children属性才显示 -->
-      <view class="category-level2" v-for="(c2, index2) in categoryLevel2" :key="c2.catId" v-show="'children' in c2">
-        <view class="category-level2-name">
-          / {{ c2.catName}} /
+    <view class="scroll-view-container">
+      <!-- 左侧滚动视图区域 -->
+      <scroll-view class="left-scroll-view" scroll-y="true">
+        <!-- 一级分类 -->
+        <view :class="['category-level1', active === index1 ? 'active' : '']" v-for="(c1, index1) in categoryList" :key="c1.catId" @tap="changeCategory(index1)">
+          {{c1.catName}}
         </view>
-        <!-- 三级分类 -->
-        <view class="category-level3-list">
-          <view class="category-level3" v-for="(c3, index3) in c2.children" :key="c3.catId" @tap="clickCategoryHandler(c3.catId)">
-            <image class="category-level3-img" :src="c3.catImage" />
-            <text class="category-level3-name">{{ c3.catName }}</text>
+      </scroll-view>
+  
+      <!-- 右侧滚动视图区域 -->
+      <scroll-view class="right-scroll-view" scroll-y="true">
+        <!-- 二级分类，如果该二级分类有children属性才显示 -->
+        <view class="category-level2" v-for="(c2, index2) in categoryLevel2" :key="c2.catId" v-show="'children' in c2">
+          <view class="category-level2-name">
+            / {{ c2.catName}} /
+          </view>
+          <!-- 三级分类 -->
+          <view class="category-level3-list">
+            <view class="category-level3" v-for="(c3, index3) in c2.children" :key="c3.catId" @tap="clickCategoryHandler(c3.catId)">
+              <image class="category-level3-img" :src="c3.catImage" />
+              <text class="category-level3-name">{{ c3.catName }}</text>
+            </view>
           </view>
         </view>
-      </view>
-    </scroll-view>
+      </scroll-view>
+    </view>
   </view>
 </template>
 

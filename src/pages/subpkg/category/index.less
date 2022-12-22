@@ -1,77 +1,82 @@
 @import '../../../styles/variables.less';
 
-.scroll-view-container {
+.category {
   display: flex;
-  height: 100vh;
+  flex-direction: column;
+  
+  .scroll-view-container {
+    display: flex;
+    height: 100vh;
 
-  // 左侧三级分类滚动视图
-  .left-scroll-view {
-    width: 250px;
-    height: 100%;
-    background-color: #eaeaea;
-    text-align: center;
+    // 左侧三级分类滚动视图
+    .left-scroll-view {
+      width: 250px;
+      height: 100%;
+      background-color: #eaeaea;
+      text-align: center;
 
-    .category-level1 {
-      line-height: 100px;
-      font-size: 28px;
+      .category-level1 {
+        line-height: 100px;
+        font-size: 28px;
 
-      // 给激活的分类添加样式
-      &.active {
-        position: relative;
-        background-color: #ffffff;
+        // 给激活的分类添加样式
+        &.active {
+          position: relative;
+          background-color: #ffffff;
 
-        // 左边红色提示条
-        &::before {
-          content: '';
-          display: block;
-          width: 6px;
-          height: 60px;
-          // background-color: #AA0000;
-          background-color: @primaryColor;
-          position: absolute;
-          left: 0;
-          top: 50%;
-          transform: translateY(-50%);
+          // 左边红色提示条
+          &::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 60px;
+            // background-color: #AA0000;
+            background-color: @primaryColor;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+          }
         }
       }
     }
-  }
 
-  // 右侧分类详情滚动视图
-  .right-scroll-view {
-    height: 100%;
-    background-color: #ffffff;
+    // 右侧分类详情滚动视图
+    .right-scroll-view {
+      height: 100%;
+      background-color: #ffffff;
 
-    .category-level2 {
+      .category-level2 {
 
-      // 二级分类名称
-      .category-level2-name {
-        font-size: 28px;
-        font-weight: bold;
-        text-align: center;
-        padding: 30px 0;
-      }
+        // 二级分类名称
+        .category-level2-name {
+          font-size: 28px;
+          font-weight: bold;
+          text-align: center;
+          padding: 30px 0;
+        }
 
-      // 三级分类列表
-      .category-level3-list {
-        display: flex;
-        flex-wrap: wrap;
-
-        // 三级分类项
-        .category-level3 {
-          width: 33.33%;
-          margin-bottom: 20px;
+        // 三级分类列表
+        .category-level3-list {
           display: flex;
-          flex-direction: column;
-          align-items: center;
+          flex-wrap: wrap;
 
-          .category-level3-img {
-            width: 120px;
-            height: 120px;
-          }
+          // 三级分类项
+          .category-level3 {
+            width: 33.33%;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-          .category-level3-name {
-            font-size: 28px
+            .category-level3-img {
+              width: 120px;
+              height: 120px;
+            }
+
+            .category-level3-name {
+              font-size: 28px
+            }
           }
         }
       }
