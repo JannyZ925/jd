@@ -85,7 +85,7 @@ export default {
     // 获取搜索结果
     async getSearchResults() {
       loading(true);
-      this.searchResults = await request(`/goods/{keyword}?keyword=${this.keyword}`);
+      this.searchResults = await request(`/goods/search?keyword=${this.keyword}`);
       loading(false);
     },
 
