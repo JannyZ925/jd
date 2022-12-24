@@ -11,7 +11,8 @@ export default defineAppConfig({
       pages: [
         "category/index",
         "goodsList/index",
-        "search/index"
+        "search/index",
+        "goodsDetail/index"
       ]
     }
   ],

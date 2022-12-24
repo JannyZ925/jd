@@ -1,0 +1,86 @@
+@import '../../../styles/variables.less';
+
+swiper {
+    height: 750px;
+
+    image {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+.goods-info:extend(.d-f, .fd-c, .jc-sa) {
+    height: 300px;
+    padding: 0 20px;
+
+    .goods-price {
+        color: #AA0000;
+        font-size: 50px
+    }
+
+    .goods-name {
+        font-size: 32px;
+    }
+
+    .goods-carriage {
+        color: #929293;
+    }
+}
+
+
+.goods-detail {
+    padding-bottom: 100px;
+}
+
+.goods-nav:extend(.d-f, .jc-sa, .ai-center) {
+    // 固定在页面底部
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    height: 100px;
+    background-color: white;
+
+    .nav-item:extend(.d-f, .fd-c, .jc-sa, .ai-center) {
+        font-size: 26px;
+        height: 100px;
+
+        .at-icon {
+            font-size: 40px;
+        }
+    }
+
+    .buttons:extend(.d-f) {
+        button {
+            border-radius: 40px;
+            width: 250px;
+            line-height: 80px;
+            color: white;
+            font-size: 30px;
+        }
+        .add-to-cart {
+            background-color: #FFA200;
+        }
+        .buy-right-now {
+            background-color: #FF0000;
+        }
+    }
+}
+
+
+.d-f {
+    display: flex;
+}
+
+.fd-c {
+    flex-direction: column;
+}
+
+.jc-sa {
+    justify-content: space-around;
+}
+
+.ai-center {
+    align-items: center;
+}

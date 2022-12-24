@@ -1,6 +1,6 @@
 <template>
   <view class="goods-item">
-    <view class="goods-img">
+    <view class="goods-img" @tap="handleClickImage(goods.goodsId)">
       <image :src="goods.goodsSmallLogo || defaultImage" />
     </view>
     <view class="goods-info">
@@ -12,6 +12,7 @@
 
 <script>
 import "./index.less";
+import Taro from '@tarojs/taro'
 
 export default {
   name: "goods-item",
@@ -26,6 +27,13 @@ export default {
     goods: {
       type: Object,
       default: {}
+    }
+  },
+  methods: {
+    handleClickImage(goodsId) {
+      Taro.navigateTo({
+        url: `/pages/subpkg/goodsDetail/index?goodsId=${goodsId}`
+      })
     }
   }
 };

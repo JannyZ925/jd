@@ -10,7 +10,7 @@
       :circular="true"
       :interval="3000"
     >
-      <swiper-item v-for="(item, index) in bannerList" :key="item.goodsId">
+      <swiper-item v-for="(item, index) in bannerList" :key="item.goodsId" @tap="clickSwiperItemHandler(item.goodsId)">
         <image :src="item.imageUrl" />
       </swiper-item>
     </swiper>
@@ -96,6 +96,11 @@ export default {
     getFloorList() {
       // 发起请求，获取瀑布流数据
       return request("/home/floorList");
+    },
+
+    // 点击轮播图事件
+    clickSwiperItemHandler(goodsId) {
+      Taro.navigateTo({ url: `/pages/subpkg/goodsDetail/index?goodsId=${goodsId}` })
     },
 
     // 点击分类导航项的事件
