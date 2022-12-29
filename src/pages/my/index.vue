@@ -27,10 +27,11 @@
 </template>
 
 <script>
+import Taro from '@tarojs/taro'
 import './index.less'
 
 import { AtButton, AtSearchBar } from '@lexmin0412/taro-ui-vue'
-import { request, loading } from "../../utils/request";
+import { request, loading, toast } from "../../utils/request";
 
 export default {
   data () {
@@ -49,7 +50,14 @@ export default {
     },
 
     async handleClickSubmitBtn() {
-      const res = await request('/user/add', "POST", this.user)
+      loading(true, "登录中...")
+      const res = await request('/user/login', "POST", this.user)
+      const icon = res === "登录成功！" ? 'success' : 'error'
+      Taro.showToast({
+        title: res,
+        icon,
+        duration: 2000
+      })
     }
   }
 }
