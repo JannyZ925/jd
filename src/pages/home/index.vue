@@ -65,7 +65,8 @@
 
 <script>
 import Taro from "@tarojs/taro";
-import { request, loading } from "../../utils/request";
+import { showLoading, hideLoading } from "@/utils/loading";
+import { getBannerList, getMenuList, getFloorList} from "@/apis/home"
 import "./index.less";
 
 export default {
@@ -80,53 +81,35 @@ export default {
     };
   },
   methods: {
-    // 获取轮播图数据
-    getBannerList() {
-      // 发起请求，获取轮播图数据
-      return request("/home/bannerList");
-    },
-
-    // 获取分类导航数据
-    getMenuList() {
-      // 发起请求，获取分类导航数据
-      return request("/home/menuList");
-    },
-
-    // 获取瀑布流数据
-    getFloorList() {
-      // 发起请求，获取瀑布流数据
-      return request("/home/floorList");
-    },
-
     // 点击轮播图事件
     clickSwiperItemHandler(goodsId) {
-      Taro.navigateTo({ url: `/pages/subpkg/goodsDetail/index?goodsId=${goodsId}` })
+      Taro.navigateTo({ url: `/pages/goodsDetail/index?goodsId=${goodsId}` })
     },
 
     // 点击分类导航项的事件
     clickMenuItemHandler(item) {
       // 如果点击的是“分类”导航，则跳转到分类页面
       if (item.title === "分类") {
-        Taro.navigateTo({ url: "/pages/subpkg/category/index" });
+        Taro.navigateTo({ url: "/pages/category/index" });
       }
     },
   },
 
   mounted() {
     // 提示加载中
-    loading(true);
+    showLoading();
 
     // 发请求，给对应数据赋值
     Promise.all([
-      this.getBannerList(),
-      this.getMenuList(),
-      this.getFloorList(),
+      getBannerList(),
+      getMenuList(),
+      getFloorList(),
     ]).then(([bannerList, menuList, floorList]) => {
       this.bannerList = bannerList;
       this.menuList = menuList;
       this.floorList = floorList;
       // 请求完毕后关闭加载中提示
-      loading(false);
+      hideLoading();
     });
   },
 };

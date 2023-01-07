@@ -1,5 +1,6 @@
 import Taro from "@tarojs/taro";
-import { request, loading } from "../utils/request";
+import { showLoading, hideLoading } from "@/utils/loading";
+import { getGoodsList } from "@/apis/goods";
 
 export default {
     data() {
@@ -29,9 +30,9 @@ export default {
     methods: {
         // 获取商品列表
         async getGoodsList() {
-            loading(true);
+            showLoading();
             // 发请求，获取新数据
-            const result = await request("/goods", "GET", this.queryObj);
+            const result = await getGoodsList(this.queryObj);
             // 如果没有新的数据，则显示提示文字
             if (this.goodsList.length !== 0 && result.length === 0) this.showTips = true;
             // 整合新旧数据
@@ -39,7 +40,7 @@ export default {
             // 停止下拉刷新
             Taro.stopPullDownRefresh();
             // 关闭加载提示
-            loading(false);
+            hideLoading();
         }
     },
 
