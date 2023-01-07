@@ -20,8 +20,13 @@
     "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "@/utils/*": ["./src/utils/*"],
+      "@/mixin/*": ["./src/mixin/*"],
+      "@/apis/*": ["./src/apis/*"],
+    }
   },
   "include": ["./src", "./types"],
-  "compileOnSave": false
+  "compileOnSave": false,
 }
