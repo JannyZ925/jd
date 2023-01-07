@@ -1,12 +1,19 @@
 import Taro from '@tarojs/taro'
 
-export const request = (url, method, data) => {
-    const defaultMethod = "GET"
+interface Options {
+    method?: "GET" | "POST" | "PUT" | "DELETE",
+    data?: Object 
+}
+
+const defaultOptions: Options = {
+    method: 'GET'
+}
+
+export const request = (url, options: Options = defaultOptions) => {
     return new Promise((resolve, reject) =>
         Taro.request({
             url,
-            method: method || defaultMethod,
-            data,
+            ...options,
             success: (res) => {
                 resolve(res.data.data);
             },
@@ -14,12 +21,22 @@ export const request = (url, method, data) => {
     );
 }
 
-// 控制是否显示加载中的提示
-export const loading = (show, title = "玩命加载中...") => {
-    if (show) {
-        Taro.showLoading({
-            title,
-            mask: true,
-        });
-    } else Taro.hideLoading()
+export const get = (url, data):Promise<any> => {
+    return request(url, { method: 'GET', data });
 }
+
+export const post = (url, data):Promise<any> => {
+    return request(url, { method: 'POST', data });
+}
+
+export const put = (url, data):Promise<any> => {
+    return request(url, { method: 'PUT', data });
+}
+
+export const del = (url, data):Promise<any> => {
+    return request(url, { method: 'DELETE', data });
+}
+
+
+
+
