@@ -13,6 +13,8 @@
 <script>
 import "./index.less";
 import Taro from '@tarojs/taro'
+import * as paths from "@/consts/path";
+
 
 export default {
   name: "goods-item",
@@ -32,7 +34,7 @@ export default {
   methods: {
     handleClickImage(goodsId) {
       Taro.navigateTo({
-        url: `/pages/goodsDetail/index?goodsId=${goodsId}`
+        url: `${paths.GOODS_DETAIL}?goodsId=${goodsId}`
       })
     }
   }

@@ -10,6 +10,7 @@
 <script>
 import "./index.less";
 import Taro from '@tarojs/taro'
+import * as paths from "@/consts/path";
 
 export default {
   data() {
@@ -20,7 +21,7 @@ export default {
   methods: {
     clickSearchInputHandler() {
       Taro.navigateTo({
-        url: '/pages/search/index'
+        url: paths.SEARCH
       })
     }
   }

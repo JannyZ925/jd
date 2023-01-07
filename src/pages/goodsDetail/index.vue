@@ -60,6 +60,8 @@ import { getGoodsDetail } from "@/apis/goods";
 import { storeUpGoods, cancelStoreUpGoods } from "@/apis/user";
 import { showLoading, hideLoading } from "@/utils/loading";
 import { toast } from "@/utils/toast";
+import * as paths from "@/consts/path";
+
 
 export default {
   data() {
@@ -118,7 +120,7 @@ export default {
       if(!this.user) {
         toast('请先登录！', { icon: 'error'});
         setTimeout(() => {
-          Taro.switchTab({url: '/pages/my/index'})
+          Taro.switchTab({url: paths.MY})
         }, 1000)
         return;
       }

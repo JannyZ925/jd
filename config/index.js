@@ -28,7 +28,8 @@ const config = {
     // 'taro-ui-vue': TARO_UI_VUE_ENTRY  // 修改 taro-ui-vue的入口为 node_modules/taro-ui-vue/dist/index.js
     '@/utils': path.resolve(__dirname, '..', 'src/utils'),
     '@/mixin': path.resolve(__dirname, '..', 'src/mixin'),
-    '@/apis': path.resolve(__dirname, '..', 'src/apis')
+    '@/apis': path.resolve(__dirname, '..', 'src/apis'),
+    '@/consts': path.resolve(__dirname, '..', 'src/consts')
   },
   compiler: {
     type: 'webpack5',

@@ -67,6 +67,7 @@
 import Taro from "@tarojs/taro";
 import { showLoading, hideLoading } from "@/utils/loading";
 import { getBannerList, getMenuList, getFloorList} from "@/apis/home"
+import * as paths from "@/consts/path";
 import "./index.less";
 
 export default {
@@ -83,14 +84,14 @@ export default {
   methods: {
     // 点击轮播图事件
     clickSwiperItemHandler(goodsId) {
-      Taro.navigateTo({ url: `/pages/goodsDetail/index?goodsId=${goodsId}` })
+      Taro.navigateTo({ url: `${paths.GOODS_DETAIL}?goodsId=${goodsId}` })
     },
 
     // 点击分类导航项的事件
     clickMenuItemHandler(item) {
       // 如果点击的是“分类”导航，则跳转到分类页面
       if (item.title === "分类") {
-        Taro.navigateTo({ url: "/pages/category/index" });
+        Taro.navigateTo({ url: paths.CATEGORY });
       }
     },
   },

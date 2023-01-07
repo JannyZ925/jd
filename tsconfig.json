@@ -25,6 +25,7 @@
       "@/utils/*": ["./src/utils/*"],
       "@/mixin/*": ["./src/mixin/*"],
       "@/apis/*": ["./src/apis/*"],
+      "@/consts/*": ["./src/consts/*"],
     }
   },
   "include": ["./src", "./types"],

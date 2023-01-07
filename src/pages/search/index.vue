@@ -51,6 +51,7 @@ import "./index.less";
 import Taro from "@tarojs/taro";
 import { searchGoods } from "@/apis/goods";
 import { showLoading, hideLoading } from "@/utils/loading";
+import * as paths from "@/consts/path";
 
 export default {
   data() {
@@ -116,13 +117,13 @@ export default {
     // 跳转到商品列表页面
     goToGoodsList(keyword) {
       Taro.navigateTo({
-        url: `/pages/goodsList/index?keyword=${keyword}`,
+        url: `${paths.GOODS_LIST}?keyword=${keyword}`,
       });
     },
 
     handleClickSearchResultItem(goodsId) {
       Taro.navigateTo({
-        url: `/pages/goodsDetail/index?goodsId=${goodsId}`
+        url: `${paths.GOODS_DETAIL}?goodsId=${goodsId}`
       })
       this.searchHistory.push(this.keyword);
     },

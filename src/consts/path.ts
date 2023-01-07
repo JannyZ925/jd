@@ -1,0 +1,8 @@
+export const HOME = "/pages/home/index"
+export const NEW  = "/pages/new/index"
+export const CART = "/pages/cart/index"
+export const MY = "/pages/my/index"
+export const CATEGORY = "/pages/category/index"
+export const GOODS_LIST = "/pages/goodsList/index"
+export const SEARCH = "/pages/search/index"
+export const GOODS_DETAIL = "/pages/goodsDetail/index"
