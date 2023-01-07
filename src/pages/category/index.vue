@@ -35,7 +35,8 @@
 <script>
 import "./index.less";
 import Taro from "@tarojs/taro";
-import { request, loading } from "../../../utils/request";
+import { getCategoryList } from "@/apis/category";
+import { showLoading, hideLoading } from "@/utils/loading";
 
 export default {
   data() {
@@ -49,10 +50,6 @@ export default {
     };
   },
   methods: {
-    // 获取分类数据
-    getCategoryList() {
-      return request("/category");
-    },
     // 修改一级分类
     changeCategory(index) {
       this.active = index;
@@ -68,15 +65,15 @@ export default {
   },
   mounted() {
     // 显示加载提示框
-    loading(true);
+    showLoading();
 
     // 发请求，给相应数据赋值
-    Promise.all([this.getCategoryList()]).then(([categoryList]) => {
+    Promise.all([getCategoryList()]).then(([categoryList]) => {
       this.categoryList = categoryList;
       // 默认二级分类为第一个一级分类下的children
       this.categoryLevel2 = categoryList[0].children
       // 请求完毕后关闭加载提示
-      loading(false);
+      hideLoading();
     });
   },
 };

@@ -32,7 +32,7 @@ export default {
   methods: {
     handleClickImage(goodsId) {
       Taro.navigateTo({
-        url: `/pages/subpkg/goodsDetail/index?goodsId=${goodsId}`
+        url: `/pages/goodsDetail/index?goodsId=${goodsId}`
       })
     }
   }

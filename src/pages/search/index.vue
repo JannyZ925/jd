@@ -35,6 +35,7 @@
         class="search-results-item"
         v-for="(result, index) in searchResults"
         :key="index"
+        @tap="handleClickSearchResultItem(result.goodsId)"
       >
         <view class="goods-name">
           {{ result.goodsName }}
@@ -48,7 +49,8 @@
 <script>
 import "./index.less";
 import Taro from "@tarojs/taro";
-import { request, loading } from "../../../utils/request";
+import { searchGoods } from "@/apis/goods";
+import { showLoading, hideLoading } from "@/utils/loading";
 
 export default {
   data() {
@@ -84,9 +86,9 @@ export default {
   methods: {
     // 获取搜索结果
     async getSearchResults() {
-      loading(true);
-      this.searchResults = await request(`/goods/search?keyword=${this.keyword}`);
-      loading(false);
+      showLoading();
+      this.searchResults = await searchGoods(this.keyword);
+      hideLoading();
     },
 
     // 搜索框输入值改变事件
@@ -114,10 +116,16 @@ export default {
     // 跳转到商品列表页面
     goToGoodsList(keyword) {
       Taro.navigateTo({
-        url: `/pages/subpkg/goodsList/index?keyword=${keyword}`,
+        url: `/pages/goodsList/index?keyword=${keyword}`,
       });
     },
 
+    handleClickSearchResultItem(goodsId) {
+      Taro.navigateTo({
+        url: `/pages/goodsDetail/index?goodsId=${goodsId}`
+      })
+      this.searchHistory.push(this.keyword);
+    },
 
     // 点清空按钮事件
     clickCleanIconHandler() {

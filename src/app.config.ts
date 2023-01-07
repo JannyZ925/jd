@@ -7,13 +7,20 @@ export default defineAppConfig({
   ],
   subpackages: [
     {
-      root: "pages/subpkg",
-      pages: [
-        "category/index",
-        "goodsList/index",
-        "search/index",
-        "goodsDetail/index"
-      ]
+      root: "pages/category",
+      pages: ["index"]
+    },
+    {
+      root: "pages/goodsList",
+      pages: ["index"]
+    },
+    {
+      root: "pages/search",
+      pages: ["index"]
+    },
+    {
+      root: "pages/goodsDetail",
+      pages: ["index"]
     }
   ],
   window: {

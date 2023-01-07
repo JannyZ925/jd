@@ -20,7 +20,7 @@ export default {
   methods: {
     clickSearchInputHandler() {
       Taro.navigateTo({
-        url: '/pages/subpkg/search/index'
+        url: '/pages/search/index'
       })
     }
   }

@@ -9,7 +9,7 @@
 
 <script>
 import "./index.less";
-import mixin from '../../../mixin/index'
+import mixin from '@/mixin/index'
 
 export default {
   
