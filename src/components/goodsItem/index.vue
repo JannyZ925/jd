@@ -36,7 +36,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations('user', {updateUser: 'UPDATEUSER'}),
+    ...mapMutations('user', {updateUser: 'UPDATE_USER'}),
 
     async handleClickImage(goodsId) {
       Taro.navigateTo({

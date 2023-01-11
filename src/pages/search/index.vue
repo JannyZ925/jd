@@ -88,7 +88,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations('user', {updateUser: 'UPDATEUSER'}),
+    ...mapMutations('user', {updateUser: 'UPDATE_USER'}),
 
     // 获取搜索结果
     async getSearchResults() {

@@ -121,7 +121,7 @@ export default {
     ...mapGetters('user', ['storedGoods', 'lookedGoods'])
   },
   methods: {
-    ...mapMutations('user', { updateUser: 'UPDATEUSER'}),
+    ...mapMutations('user', { updateUser: 'UPDATE_USER'}),
 
     // 输入框的值改变
     onChange(stateName, value) {

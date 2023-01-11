@@ -18,7 +18,7 @@ export default {
 
     mutations: {
         // 更新用户信息
-        UPDATEUSER(state, value) {
+        UPDATE_USER(state, value) {
             state.user = value;
             Taro.setStorageSync('user', state.user);
         }
