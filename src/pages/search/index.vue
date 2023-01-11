@@ -52,6 +52,7 @@ import Taro from "@tarojs/taro";
 import { searchGoods } from "@/apis/goods";
 import { showLoading, hideLoading } from "@/utils/loading";
 import * as paths from "@/consts/path";
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   data() {
@@ -66,6 +67,8 @@ export default {
   },
 
   computed: {
+    ...mapState('user', ['user']),
+
     // this.searchHistory.reverse() 反转搜索历史数组,最后搜索的排在最前面
     /**
      * 使用Set进行去重
@@ -85,6 +88,8 @@ export default {
   },
 
   methods: {
+    ...mapMutations('user', {updateUser: 'UPDATEUSER'}),
+
     // 获取搜索结果
     async getSearchResults() {
       showLoading();
@@ -121,11 +126,15 @@ export default {
       });
     },
 
-    handleClickSearchResultItem(goodsId) {
+    async handleClickSearchResultItem(goodsId) {
       Taro.navigateTo({
         url: `${paths.GOODS_DETAIL}?goodsId=${goodsId}`
       })
       this.searchHistory.push(this.keyword);
+      if(this.user) {
+        const user = await addLookedGoods(this.user, goodsId);
+        this.updateUser(user)
+      }
     },
 
     // 点清空按钮事件

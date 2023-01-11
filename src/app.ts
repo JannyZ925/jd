@@ -2,6 +2,7 @@ import Vue from 'vue'
 import TaroUIVue from '@lexmin0412/taro-ui-vue/src/index'
 import { AtSearchBar, AtTag, AtForm, AtInput } from "@lexmin0412/taro-ui-vue";
 import './request'
+import store from './store'
 
 import GoodsItem from './components/goodsItem/index.vue';
 import Search from './components/search/index.vue';
@@ -21,6 +22,7 @@ Vue.component('search', Search)
 
 
 const App = {
+  store,
   render(h) {
     // this.$slots.default 是将要会渲染的页面
     return h('div', this.$slots.default)

@@ -1,4 +1,6 @@
-.my {
+@import '../../styles/variables.less';
+
+.login {
     padding: 300px 20px;
 
     .form {
@@ -11,5 +13,95 @@
         color: lightgrey;
         font-size: 30px;
         text-align: center;
+    }
+}
+
+.personal-page {
+    height: 100vh;
+
+    .user-info {
+        padding: 100px 0;
+        background-color: @primaryColor;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .user-avatar {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .user-name {
+            font-size: 36px;
+            color: white;
+            font-weight: bolder;
+        }
+    }
+
+    .panel-list {
+        position: relative;
+        top: -40px;
+
+        .panel1,
+        .panel2,
+        .panel3 {
+            width: 95%;
+            margin: 0 auto 20px;
+            padding: 20px 0;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px lightgray;
+
+            .panel-body {
+                display: flex;
+            }
+        }
+
+        .panel1,
+        .panel2 {
+            .panel-body {
+                justify-content: space-around;
+                align-items: center;
+
+                .panel-item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    font-size: 30px;
+                }
+            }
+        }
+
+        .panel2 {
+            .panel-title {
+                margin: 0 20px 20px;
+            }
+
+            .panel-body {
+                .panel-item {
+                    .item-img {
+                        width: 60px;
+                        height: 60px;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+
+        .panel3 {
+            display: flex;
+            flex-direction: column;
+
+            .panel-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 80px;
+                padding: 0 20px;
+            }
+        }
     }
 }

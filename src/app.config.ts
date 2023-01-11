@@ -21,6 +21,14 @@ export default defineAppConfig({
     {
       root: "pages/goodsDetail",
       pages: ["index"]
+    },
+    {
+      root: "pages/storedGoods",
+      pages: ["index"]
+    },
+    {
+      root: "pages/lookedGoods",
+      pages: ["index"]
     }
   ],
   window: {

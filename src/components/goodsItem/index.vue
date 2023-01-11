@@ -14,15 +14,19 @@
 import "./index.less";
 import Taro from '@tarojs/taro'
 import * as paths from "@/consts/path";
-
+import { addLookedGoods } from "@/apis/user";
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   name: "goods-item",
   data() {
     return {
       // 默认图片
-      defaultImage: "https://lexmin.oss-cn-hangzhou.aliyuncs.com/apis/service-data/goods/defaultImage.gif",
+      defaultImage: "https://lexmin.oss-cn-hangzhou.aliyuncs.com/apis/service-data/goods/defaultImage.gif"
     }
+  },
+  computed: {
+    ...mapState('user', ['user'])
   },
   props: {
     // 商品
@@ -32,10 +36,16 @@ export default {
     }
   },
   methods: {
-    handleClickImage(goodsId) {
+    ...mapMutations('user', {updateUser: 'UPDATEUSER'}),
+
+    async handleClickImage(goodsId) {
       Taro.navigateTo({
         url: `${paths.GOODS_DETAIL}?goodsId=${goodsId}`
       })
+      if(this.user) {
+        const user = await addLookedGoods(this.user, this.goods.goodsId);
+        this.updateUser(user)
+      }
     }
   }
 };

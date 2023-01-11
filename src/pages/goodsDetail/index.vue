@@ -61,25 +61,19 @@ import { storeUpGoods, cancelStoreUpGoods } from "@/apis/user";
 import { showLoading, hideLoading } from "@/utils/loading";
 import { toast } from "@/utils/toast";
 import * as paths from "@/consts/path";
-
+import { mapMutations, mapState } from 'vuex';
 
 export default {
   data() {
     return {
       // 商品详情
-      goodsDetail: {},
-
-      user: Taro.getStorageSync("user")
-    };
-  },
-
-  watch: {
-    user(value) {
-      Taro.setStorageSync('user', value)
+      goodsDetail: {}
     }
   },
 
   computed: {
+    ...mapState('user', ['user']),
+
     isStored() {
       let flag = false;
       if(!this.goodsDetail.goodsId) return flag;
@@ -95,6 +89,8 @@ export default {
   },
 
   methods: {
+    ...mapMutations('user', { updateUser: 'UPDATEUSER'}),
+
     async getGoodsDetail(goodsId) {
       showLoading();
       // 请求商品详情数据
@@ -124,13 +120,15 @@ export default {
         }, 1000)
         return;
       }
-      this.user = await storeUpGoods(this.user, this.goodsDetail.goodsId);
+      const user = await storeUpGoods(this.user, this.goodsDetail.goodsId);
+      this.updateUser(user)
       toast('已收藏！')
     },
 
     // 取消收藏
     async cancelStoreUpGoods() {
-      this.user = await cancelStoreUpGoods(this.user, this.goodsDetail.goodsId);
+      const user = await cancelStoreUpGoods(this.user, this.goodsDetail.goodsId);
+      this.updateUser(user)
       toast('已取消！')
     },
   },
