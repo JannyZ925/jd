@@ -18,3 +18,8 @@ export const cancelStoreUpGoods = (user, goodsId) => {
 export const addLookedGoods = (user, goodsId) => {
     return put("/user/addLooked", {user, goodsId})
 }
+
+// 加入购物车
+export const addToCart = (user, goods) => {
+    return put("/user/addToCart", {user, goods})
+}

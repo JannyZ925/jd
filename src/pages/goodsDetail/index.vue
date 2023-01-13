@@ -45,7 +45,7 @@
           <text>收藏</text>
         </view>
         <view class="buttons">
-          <button class="add-to-cart">加入购物车</button>
+          <button class="add-to-cart" @tap="addToCart">加入购物车</button>
           <button class="buy-right-now">立即购买</button>
         </view>
       </view>
@@ -57,7 +57,7 @@
 import "./index.less";
 import Taro from "@tarojs/taro";
 import { getGoodsDetail } from "@/apis/goods";
-import { storeUpGoods, cancelStoreUpGoods } from "@/apis/user";
+import { storeUpGoods, cancelStoreUpGoods, addToCart } from "@/apis/user";
 import { showLoading, hideLoading } from "@/utils/loading";
 import { toast } from "@/utils/toast";
 import * as paths from "@/consts/path";
@@ -131,6 +131,21 @@ export default {
       this.updateUser(user)
       toast('已取消！')
     },
+
+
+    // 将商品加入购物车
+    async addToCart() {
+      const goods = {
+        goodsId: this.goodsDetail.goodsId,
+        goodsName: this.goodsDetail.goodsName,
+        goodsPrice: this.goodsDetail.goodsPrice,
+        goodsSmallLogo: this.goodsDetail.goodsSmallLogo,
+        goodsCount: 1,
+        goodsState: true
+      }
+      const user = await addToCart(this.user, goods)
+      toast('添加成功！在购物车等亲~')
+    }
   },
 
   onLoad(options) {
