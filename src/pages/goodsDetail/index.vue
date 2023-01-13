@@ -144,6 +144,7 @@ export default {
         goodsState: true
       }
       const user = await addToCart(this.user, goods)
+      this.updateUser(user)
       toast('添加成功！在购物车等亲~')
     }
   },

@@ -13,6 +13,9 @@ export default {
         },
         lookedGoods(state) {
             return state.user.lookedGoods || []
+        },
+        cart(state) {
+            return state.user.cart || []
         }
     },
 
