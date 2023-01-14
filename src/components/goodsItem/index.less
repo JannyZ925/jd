@@ -1,11 +1,15 @@
-.goods-item {
+.goods-item-container {
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+  border-bottom: 1px solid lightgrey;
+  
+  .goods-item {
     display: flex;
-    padding: 20px 10px;
-    border-bottom: 1px solid lightgrey;
   
     .goods-img {
       display: flex;
-      margin-right: 20px;
+      margin-right: 10px;
   
       image {
         width: 250px;
@@ -22,11 +26,16 @@
       .goods-name {
         font-size: 30px
       }
-  
-      .goods-price {
-        font-size: 40px;
-        color: #AA0000;
+      
+      view {
+        display: flex;
+        justify-content: space-between;
+        
+        .goods-price {
+          font-size: 40px;
+          color: #AA0000;
+        }
       }
-  
     }
   }
+}
