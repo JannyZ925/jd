@@ -23,3 +23,18 @@ export const addLookedGoods = (user, goodsId) => {
 export const addToCart = (user, goods) => {
     return put("/user/addToCart", {user, goods})
 }
+
+// 修改购物车中商品数量
+export const updateGoodsCountInCart = (user, goods) => {
+    return put("/user/updateGoodsCount", {user, goods})
+}
+
+// 修改购物车中商品选中状态
+export const updateGoodsStateInCart = (user, goods) => {
+    return put("/user/updateGoodsState", {user, goods})
+}
+
+// 修改购物车商品的全选状态
+export const updateAllGoodsStateInCart = (user) => {
+    return put("/user/updateAllGoodsState", user)
+}

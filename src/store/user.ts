@@ -16,6 +16,21 @@ export default {
         },
         cart(state) {
             return state.user.cart || []
+        },
+        totalCount(state) {
+            return state.user.cart.length
+        },
+        checkedCount(state) {
+            return state.user.cart.reduce((checkedCount, item) => {
+              if(item.goodsState) checkedCount += 1
+              return checkedCount
+            }, 0)
+          },
+        totalPrice(state) {
+            return state.user.cart.reduce((totalPrice, item) => {
+                if(item.goodsState) totalPrice += (item.goodsPrice * item.goodsCount)
+                return totalPrice
+            }, 0)
         }
     },
 

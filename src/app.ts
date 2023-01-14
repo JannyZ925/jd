@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import TaroUIVue from '@lexmin0412/taro-ui-vue/src/index'
-import { AtSearchBar, AtTag, AtForm, AtInput } from "@lexmin0412/taro-ui-vue";
+import { AtSearchBar, AtTag, AtForm, AtInput, AtInputNumber } from "@lexmin0412/taro-ui-vue";
 import './request'
 import store from './store'
 
@@ -17,6 +17,7 @@ Vue.component(AtSearchBar)
 Vue.component(AtTag)
 Vue.component(AtForm)
 Vue.component(AtInput)
+Vue.component(AtInputNumber)
 Vue.component('goods-item', GoodsItem)
 Vue.component('search', Search)
 
