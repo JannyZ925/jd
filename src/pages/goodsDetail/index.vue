@@ -35,7 +35,7 @@
 
       <!-- 底部导航区域 -->
       <view class="goods-nav">
-        <view class="nav-item">
+        <view class="nav-item" @tap="goToCart">
           <view class="at-icon at-icon-shopping-cart"></view>
           <text>购物车</text>
         </view>
@@ -109,6 +109,12 @@ export default {
         current: index,
         urls: this.goodsDetail.pics.map((x) => x.picsBig),
       });
+    },
+
+    goToCart() {
+      Taro.switchTab({
+        url: `${paths.CART}`
+      })
     },
 
     // 收藏商品
