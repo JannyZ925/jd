@@ -20,7 +20,7 @@
 import "./index.less";
 import Taro from '@tarojs/taro'
 import * as paths from "@/consts/path";
-import { addLookedGoods, updateGoodsCountInCart, updateGoodsStateInCart } from "@/apis/user";
+import { updateGoodsCountInCart, updateGoodsStateInCart } from "@/apis/user";
 import { mapMutations, mapState } from 'vuex';
 
 export default {
@@ -53,10 +53,6 @@ export default {
       Taro.navigateTo({
         url: `${paths.GOODS_DETAIL}?goodsId=${goodsId}`
       })
-      if(this.user) {
-        const user = await addLookedGoods(this.user, this.goods.goodsId);
-        this.updateUser(user)
-      }
     },
 
     async changeGoodsCount(value) {

@@ -57,7 +57,7 @@
 import "./index.less";
 import Taro from "@tarojs/taro";
 import { getGoodsDetail } from "@/apis/goods";
-import { storeUpGoods, cancelStoreUpGoods, addToCart } from "@/apis/user";
+import { storeUpGoods, cancelStoreUpGoods, addToCart, addLookedGoods } from "@/apis/user";
 import { showLoading, hideLoading } from "@/utils/loading";
 import { toast } from "@/utils/toast";
 import * as paths from "@/consts/path";
@@ -155,8 +155,13 @@ export default {
     }
   },
 
-  onLoad(options) {
+  async onLoad(options) {
     this.getGoodsDetail(options.goodsId);
+    // 添加浏览记录
+    if(this.user) {
+      const user = await addLookedGoods(this.user, options.goodsId);
+      this.updateUser(user)
+    }
   },
 };
 </script>

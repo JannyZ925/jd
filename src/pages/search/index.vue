@@ -131,10 +131,6 @@ export default {
         url: `${paths.GOODS_DETAIL}?goodsId=${goodsId}`
       })
       this.searchHistory.push(this.keyword);
-      if(this.user) {
-        const user = await addLookedGoods(this.user, goodsId);
-        this.updateUser(user)
-      }
     },
 
     // 点清空按钮事件
