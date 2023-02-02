@@ -38,3 +38,8 @@ export const updateGoodsStateInCart = (user, goods) => {
 export const updateAllGoodsStateInCart = (user) => {
     return put("/user/updateAllGoodsState", user)
 }
+
+// 修改用户的收货地址
+export const updateShippingAddress = (user, address) => {
+    return put("/user/updateShippingAddress", {user, address})
+}

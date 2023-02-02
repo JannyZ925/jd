@@ -31,6 +31,9 @@ export default {
                 if(item.goodsState) totalPrice += (item.goodsPrice * item.goodsCount)
                 return totalPrice
             }, 0)
+        },
+        shippingAddress(state) {
+            return state.user.shippingAddress
         }
     },
 
