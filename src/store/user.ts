@@ -22,18 +22,23 @@ export default {
         },
         checkedCount(state) {
             return state.user.cart.reduce((checkedCount, item) => {
-              if(item.goodsState) checkedCount += 1
-              return checkedCount
+                if (item.goodsState) checkedCount += 1
+                return checkedCount
             }, 0)
-          },
+        },
         totalPrice(state) {
             return state.user.cart.reduce((totalPrice, item) => {
-                if(item.goodsState) totalPrice += (item.goodsPrice * item.goodsCount)
+                if (item.goodsState) totalPrice += (item.goodsPrice * item.goodsCount)
                 return totalPrice
             }, 0)
         },
         shippingAddress(state) {
             return state.user.shippingAddress
+        },
+        order(state) {
+            return state.user.cart.filter(cartItem => {
+                return cartItem.goodsState === true
+            })
         }
     },
 

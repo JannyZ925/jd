@@ -29,6 +29,10 @@ export default defineAppConfig({
     {
       root: "pages/lookedGoods",
       pages: ["index"]
+    },
+    {
+      root: "pages/commitOrder",
+      pages: ["index"]
     }
   ],
   window: {
@@ -64,5 +68,8 @@ export default defineAppConfig({
         selectedIconPath: 'public/tabbar/my-active.png'
       }
     ]
-  }
+  },
+  requiredPrivateInfos: [
+    "chooseAddress"
+  ]
 })
