@@ -35,8 +35,8 @@ export const updateGoodsStateInCart = (user, goods) => {
 }
 
 // 修改购物车商品的全选状态
-export const updateAllGoodsStateInCart = (user) => {
-    return put("/user/updateAllGoodsState", user)
+export const updateAllGoodsStateInCart = (user, isAllChecked) => {
+    return put("/user/updateAllGoodsState", {user, isAllChecked })
 }
 
 // 修改用户的收货地址
