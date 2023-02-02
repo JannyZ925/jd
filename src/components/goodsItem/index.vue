@@ -1,6 +1,6 @@
 <template>
   <view class="goods-item-container">
-    <radio v-if="isCart" color="#6495ED" :checked="goods.goodsState" @tap="changeGoodsState"/>
+    <radio v-if="page==='cart'" color="#6495ED" :checked="goods.goodsState" @tap="changeGoodsState"/>
     <view class="goods-item">
       <view class="goods-img" @tap="handleClickImage(goods.goodsId)">
         <image class="goods-img" :src="goods.goodsSmallLogo || defaultImage"></image>
@@ -9,7 +9,7 @@
         <text class="goods-name">{{ goods.goodsName }}</text>
         <view>
           <text class="goods-price">￥{{ goods.goodsPrice }}</text>
-          <AtInputNumber v-if="isCart" :min="1" :value="goods.goodsCount" :onChange="changeGoodsCount.bind(this)"/>
+          <AtInputNumber v-if="page==='cart' || page==='commitOrder'" :min="1" :value="goods.goodsCount" :onChange="changeGoodsCount.bind(this)"/>
         </view>
       </view>
     </view>
@@ -40,10 +40,10 @@ export default {
       type: Object,
       default: {}
     },
-    // 是否为购物车页面,用于判断是否展示radio和数字输入框
-    isCart: {
-      type: Boolean,
-      default: false
+    // 传入一个页面名称的字符串,用于判断是否展示radio和数字输入框
+    page: {
+      type: String,
+      default: "normal"
     }
   },
   methods: {
