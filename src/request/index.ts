@@ -8,7 +8,7 @@ const requestInterceptor = (chain) => {
     // 获取请求的url
     const { url } = requestParams
     // 配置基础路径
-    const baseUrl = 'http://localhost:5200/api/jd-service'
+    const baseUrl = 'https://blog.cellerchan.top/api/jd-service'
     // 添加基础路径
     if (!(url.startsWith("http://") || url.startsWith("https://"))) {
         requestParams.url = `${baseUrl}${url}`
