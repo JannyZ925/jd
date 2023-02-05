@@ -10,9 +10,9 @@
       合计：<text>￥{{ totalPrice }}</text>
     </text>
 
-    <!-- 结算 -->
-    <view class="pay-button" @tap="handleClickPayButton">
-      <text v-if="page==='cart'">结算({{ checkedCount }})</text>
+    <!-- 按钮 -->
+    <view class="button">
+      <text v-if="page==='cart'" @tap="handleClickPayButton">结算({{ checkedCount }})</text>
       <text v-if="page==='commitOrder'">提交订单</text>
     </view>
   </view>
