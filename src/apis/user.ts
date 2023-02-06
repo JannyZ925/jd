@@ -43,3 +43,8 @@ export const updateAllGoodsStateInCart = (user, isAllChecked) => {
 export const updateShippingAddress = (user, address) => {
     return put("/user/updateShippingAddress", {user, address})
 }
+
+// 修改用户的账户余额
+export const updateSurplus = (user, money) => {
+    return put("/user/updateSurplus", {user, money})
+}

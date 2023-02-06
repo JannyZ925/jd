@@ -73,8 +73,8 @@
   
         <!-- 第三个面板 -->
         <view class="panel3">
-          <view class="panel-item">
-            <text>收货地址</text>
+          <view class="panel-item" @tap="goToSurplus">
+            <text>账户余额</text>
             <view class='at-icon at-icon-chevron-right'></view>
           </view>
           <view class="panel-item" @tap="logout">
@@ -150,6 +150,13 @@ export default {
     goToLookedGoods() {
       Taro.navigateTo({
         url: `${paths.LOOKED_GOODS}?lookedGoods=${JSON.stringify(this.lookedGoods)}`
+      })
+    },
+
+
+    goToSurplus() {
+      Taro.navigateTo({
+        url: `${paths.SURPLUS}`
       })
     },
 

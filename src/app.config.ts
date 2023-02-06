@@ -33,6 +33,10 @@ export default defineAppConfig({
     {
       root: "pages/commitOrder",
       pages: ["index"]
+    },
+    {
+      root: "pages/surplus",
+      pages: ["index"]
     }
   ],
   window: {
