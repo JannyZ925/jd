@@ -8,21 +8,73 @@
 
     <!-- 结算区域 -->
     <settle page="commitOrder"/>
+
+    <!-- 支付面板 -->
+    <AtActionSheet
+      :isOpened="isOpend"
+      cancelText="取消"
+      title="支付方式"
+      :onCancel="handleClose"
+      :onClose="handleClose"
+    >
+      <AtActionSheetItem :onClick="pay">
+        余额({{ surplus || 0 }}元)
+      </AtActionSheetItem>
+    </AtActionSheet>
   </view>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import './index.less'
+import { mapGetters, mapMutations, mapState } from "vuex";
+import "./index.less";
+import { addOrder } from "@/apis/user";
+import { toast } from '@/utils/toast';
+import { showLoading } from '@/utils/loading';
 
 export default {
-  data () {
+  data() {
     return {
-      
-    }
+      // 是否显示支付的动作面板
+      isOpend: false,
+    };
   },
   computed: {
-    ...mapGetters("user", ["order"])
-  }
-}
+    ...mapState("user", ["user"]),
+    ...mapGetters("user", ["order", "surplus", "totalPrice"]),
+  },
+  mounted() {
+    this.$bus.$on("openActionSheet", () => {
+      this.isOpend = true;
+    });
+  },
+  methods: {
+    ...mapMutations("user", { updateUser: "UPDATE_USER" }),
+    handleClose() {
+      this.isOpend = false;
+    },
+    async pay() {
+      toast("正在支付...", {icon: "loading"});
+      // 封装订单对象
+      const orderItem = {
+        // 订单状态为0表示未支付，0表示支付成功
+        orderStatus: 0,
+        // 订单中的商品
+        goodsList: this.order,
+        // 订单总金额
+        totalPrice: this.totalPrice,
+      };
+      console.log(orderItem.orderId);
+      let message = ""
+      if (this.surplus >= this.totalPrice) {
+        // 订单状态为0表示未支付，0表示支付成功
+        orderItem.orderStatus = 1;
+        message = "支付成功！"
+        this.isOpend = false;
+      } else message = "余额不足！"
+      const user = await addOrder(this.user, orderItem);
+      this.updateUser(user);
+      toast(message, {icon: message === "支付成功！" ? "success" : "error"});
+    },
+  },
+};
 </script>

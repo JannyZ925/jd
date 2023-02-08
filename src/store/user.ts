@@ -39,6 +39,9 @@ export default {
             return state.user.cart.filter(cartItem => {
                 return cartItem.goodsState === true
             })
+        },
+        surplus(state) {
+            return state.user.surplus;
         }
     },
 

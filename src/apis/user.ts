@@ -48,3 +48,8 @@ export const updateShippingAddress = (user, address) => {
 export const updateSurplus = (user, money) => {
     return put("/user/updateSurplus", {user, money})
 }
+
+// 添加订单
+export const addOrder = (user, order) => {
+    return put("/user/addOrder", {user, order})
+}

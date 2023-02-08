@@ -13,7 +13,7 @@
     <!-- 按钮 -->
     <view class="button">
       <text v-if="page==='cart'" @tap="handleClickPayButton">结算({{ checkedCount }})</text>
-      <text v-if="page==='commitOrder'">提交订单</text>
+      <text v-if="page==='commitOrder'" @tap="handleClickCommitButton">提交订单</text>
     </view>
   </view>
 </template>
@@ -58,6 +58,9 @@ export default {
         url: `${paths.COMMIT_ORDER}`,
       });
     },
+    handleClickCommitButton() {
+      this.$bus.$emit("openActionSheet")
+    }
   },
 };
 </script>

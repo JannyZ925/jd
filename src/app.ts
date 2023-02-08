@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import TaroUIVue from '@lexmin0412/taro-ui-vue/src/index'
-import { AtSearchBar, AtTag, AtForm, AtInput, AtInputNumber } from "@lexmin0412/taro-ui-vue";
+import { AtSearchBar, AtTag, AtForm, AtInput, AtInputNumber, AtActionSheet } from "@lexmin0412/taro-ui-vue";
 import './request'
 import store from './store'
 
@@ -20,6 +20,7 @@ Vue.component(AtTag)
 Vue.component(AtForm)
 Vue.component(AtInput)
 Vue.component(AtInputNumber)
+Vue.component(AtActionSheet)
 Vue.component('goods-item', GoodsItem)
 Vue.component('search', Search)
 Vue.component('shipping-address', ShippingAddress)
@@ -31,6 +32,9 @@ const App = {
   render(h) {
     // this.$slots.default 是将要会渲染的页面
     return h('div', this.$slots.default)
+  },
+  beforeCreate () {
+    Vue.prototype.$bus = this;
   }
 }
 
