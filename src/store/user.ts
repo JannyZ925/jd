@@ -42,6 +42,19 @@ export default {
         },
         surplus(state) {
             return state.user.surplus;
+        },
+        allOrders(state) {
+            return state.user.orders;
+        },
+        ordersWaitingForPay(state) {
+            return state.user.orders.filter(orderItem => {
+                return orderItem.orderStatus === 0
+            })
+        },
+        ordersWaitingForArrive(state) {
+            return state.user.orders.filter(orderItem => {
+                return orderItem.orderStatus === 1
+            })
         }
     },
 

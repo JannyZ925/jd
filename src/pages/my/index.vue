@@ -52,11 +52,11 @@
         <view class="panel2">
           <view class="panel-title">我的订单</view>
           <view class="panel-body">
-            <view class="panel-item">
+            <view class="panel-item" @tap="goToOrders('waitingForPay')">
               <image class="item-img" src="https://lexmin.oss-cn-hangzhou.aliyuncs.com/apis/service-data/my/icons/1.png" mode=""></image>
               <text>待付款</text>
             </view>
-            <view class="panel-item">
+            <view class="panel-item" @tap="goToOrders('waitingForArrive')">
               <image class="item-img" src="https://lexmin.oss-cn-hangzhou.aliyuncs.com/apis/service-data/my/icons/2.png" mode=""></image>
               <text>待收货</text>
             </view>
@@ -64,7 +64,7 @@
               <image class="item-img" src="https://lexmin.oss-cn-hangzhou.aliyuncs.com/apis/service-data/my/icons/3.png"></image>
               <text>退款/退货</text>
             </view>
-            <view class="panel-item">
+            <view class="panel-item" @tap="goToOrders('all')">
               <image class="item-img" src="https://lexmin.oss-cn-hangzhou.aliyuncs.com/apis/service-data/my/icons/4.png"></image>
               <text>全部订单</text>
             </view>
@@ -150,6 +150,13 @@ export default {
     goToLookedGoods() {
       Taro.navigateTo({
         url: `${paths.LOOKED_GOODS}?lookedGoods=${JSON.stringify(this.lookedGoods)}`
+      })
+    },
+
+
+    goToOrders(typeOfOrders) {
+      Taro.navigateTo({
+        url: `${paths.ORDERS}?type=${typeOfOrders}`
       })
     },
 

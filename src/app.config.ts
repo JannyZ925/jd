@@ -37,6 +37,10 @@ export default defineAppConfig({
     {
       root: "pages/surplus",
       pages: ["index"]
+    },
+    {
+      root: "pages/orders",
+      pages: ["index"]
     }
   ],
   window: {
