@@ -147,7 +147,7 @@ export default {
         goodsPrice: this.goodsDetail.goodsPrice,
         goodsSmallLogo: this.goodsDetail.goodsSmallLogo,
         goodsCount: 1,
-        goodsState: true
+        goodsState: false
       }
       const user = await addToCart(this.user, goods)
       this.updateUser(user)
