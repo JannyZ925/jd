@@ -24,6 +24,7 @@ import { mapGetters, mapMutations, mapState } from "vuex";
 import { updateAllGoodsStateInCart } from "@/apis/user";
 import "./index.less";
 import * as paths from "@/consts/path";
+import { toast } from '@/utils/toast';
 
 export default {
   data() {
@@ -37,7 +38,7 @@ export default {
   },
   computed: {
     ...mapState("user", ["user"]),
-    ...mapGetters("user", ["cart", "totalCount", "checkedCount", "totalPrice"]),
+    ...mapGetters("user", ["cart", "totalCount", "checkedCount", "totalPrice", "shippingAddress", "order"]),
 
     isAllChecked() {
       return this.totalCount === this.checkedCount;
@@ -53,10 +54,14 @@ export default {
       );
       this.updateUser(user);
     },
-    async handleClickPayButton() {
-      Taro.navigateTo({
+    handleClickPayButton() {
+      if(this.shippingAddress && this.order.length !== 0) {
+        Taro.navigateTo({
         url: `${paths.COMMIT_ORDER}`,
       });
+      }
+      if(!this.shippingAddress) toast("请选择收货地址！", { icon: "error" })
+      if(this.order.length === 0) toast("请选择商品！", { icon: "error" })
     },
     handleClickCommitButton() {
       this.$bus.$emit("openActionSheet")
