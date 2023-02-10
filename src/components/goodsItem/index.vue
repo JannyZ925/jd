@@ -10,6 +10,7 @@
         <view>
           <text class="goods-price">￥{{ goods.goodsPrice }}</text>
           <AtInputNumber v-if="page==='cart' || page==='commitOrder'" :min="1" :value="goods.goodsCount" :onChange="changeGoodsCount.bind(this)"/>
+          <text v-if="page==='order'">×{{ goods.goodsCount }}</text>
         </view>
       </view>
     </view>
