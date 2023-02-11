@@ -38,10 +38,15 @@ export default {
   },
   computed: {
     ...mapState("user", ["user"]),
-    ...mapGetters("user", ["cart", "totalCount", "checkedCount", "totalPrice", "shippingAddress", "order"]),
+    ...mapGetters("user", ["cart", "totalCount", "checkedCount", "totalPrice", "shippingAddress"]),
 
     isAllChecked() {
       return this.totalCount === this.checkedCount;
+    },
+    goodsInOrder() {
+      return this.user.cart.filter(cartItem => {
+        return cartItem.goodsState === true;
+      });
     },
   },
   methods: {
@@ -55,13 +60,13 @@ export default {
       this.updateUser(user);
     },
     handleClickPayButton() {
-      if(this.shippingAddress && this.order.length !== 0) {
+      if(this.shippingAddress && this.goodsInOrder.length !== 0) {
         Taro.navigateTo({
-        url: `${paths.COMMIT_ORDER}`,
-      });
+          url: `${paths.COMMIT_ORDER}?goodsList=${JSON.stringify(this.goodsInOrder)}`,
+        });
       }
       if(!this.shippingAddress) toast("请选择收货地址！", { icon: "error" })
-      if(this.order.length === 0) toast("请选择商品！", { icon: "error" })
+      if(this.goodsInOrder.length === 0) toast("请选择商品！", { icon: "error" })
     },
     handleClickCommitButton() {
       this.$bus.$emit("openActionSheet")
