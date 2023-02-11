@@ -4,7 +4,7 @@
     <shipping-address/>
 
     <!-- 商品列表 -->
-    <goods-item v-for="(goods, index) in order" :key="goods.goodsId" :goods="goods" page="commitOrder"/>
+    <goods-item v-for="(goods, index) in goodsList" :key="goods.goodsId" :goods="goods" page="commitOrder"/>
 
     <!-- 结算区域 -->
     <settle page="commitOrder"/>
@@ -36,11 +36,13 @@ export default {
     return {
       // 是否显示支付的动作面板
       isOpend: false,
+      // 订单中的商品
+      goodsList: []
     };
   },
   computed: {
     ...mapState("user", ["user"]),
-    ...mapGetters("user", ["order", "surplus", "totalPrice"]),
+    ...mapGetters("user", ["surplus", "totalPrice"]),
   },
   mounted() {
     this.$bus.$on("openActionSheet", () => {
@@ -59,11 +61,10 @@ export default {
         // 订单状态为0表示未支付，0表示支付成功
         orderStatus: 0,
         // 订单中的商品
-        goodsList: this.order,
+        goodsList: this.goodsList,
         // 订单总金额
         totalPrice: this.totalPrice,
       };
-      console.log(orderItem.orderId);
       let message = ""
       if (this.surplus >= this.totalPrice) {
         // 订单状态为0表示未支付，0表示支付成功
@@ -76,5 +77,8 @@ export default {
       toast(message, {icon: message === "支付成功！" ? "success" : "error"});
     },
   },
+  onLoad(options) {
+    this.goodsList = JSON.parse(options.goodsList);
+  }
 };
 </script>
