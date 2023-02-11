@@ -21,7 +21,7 @@
         </view>
 
         <!-- 结算区域 -->
-        <settle/>
+        <settle :totalPrice="totalPrice"/>
       </view>
     </view>
 
@@ -44,7 +44,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("user", ["cart"])
+    ...mapGetters("user", ["cart"]),
+    totalPrice() {
+      return this.cart.reduce((totalPrice, item) => {
+          if (item.goodsState) totalPrice += (item.goodsPrice * item.goodsCount)
+          return totalPrice
+      }, 0)
+    }
   }
 };
 </script>

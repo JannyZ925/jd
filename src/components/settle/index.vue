@@ -35,10 +35,14 @@ export default {
       type: String,
       default: "cart",
     },
+    totalPrice: {
+      type: Number,
+      default: 0
+    }
   },
   computed: {
     ...mapState("user", ["user"]),
-    ...mapGetters("user", ["cart", "totalCount", "checkedCount", "totalPrice", "shippingAddress"]),
+    ...mapGetters("user", ["cart", "totalCount", "checkedCount", "shippingAddress"]),
 
     isAllChecked() {
       return this.totalCount === this.checkedCount;

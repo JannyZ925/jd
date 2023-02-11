@@ -26,12 +26,6 @@ export default {
                 return checkedCount
             }, 0)
         },
-        totalPrice(state) {
-            return state.user.cart.reduce((totalPrice, item) => {
-                if (item.goodsState) totalPrice += (item.goodsPrice * item.goodsCount)
-                return totalPrice
-            }, 0)
-        },
         shippingAddress(state) {
             return state.user.shippingAddress
         },
