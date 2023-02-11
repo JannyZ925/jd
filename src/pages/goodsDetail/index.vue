@@ -46,7 +46,7 @@
         </view>
         <view class="buttons">
           <button class="add-to-cart" @tap="addToCart">加入购物车</button>
-          <button class="buy-right-now">立即购买</button>
+          <button class="buy-right-now" @tap="buyNow">立即购买</button>
         </view>
       </view>
     </view>
@@ -61,7 +61,7 @@ import { storeUpGoods, cancelStoreUpGoods, addToCart, addLookedGoods } from "@/a
 import { showLoading, hideLoading } from "@/utils/loading";
 import { toast } from "@/utils/toast";
 import * as paths from "@/consts/path";
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations, mapState, mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -73,6 +73,7 @@ export default {
 
   computed: {
     ...mapState('user', ['user']),
+    ...mapGetters("user", ["shippingAddress"]),
 
     isStored() {
       let flag = false;
@@ -152,6 +153,23 @@ export default {
       const user = await addToCart(this.user, goods)
       this.updateUser(user)
       toast('添加成功！在购物车等亲~')
+    },
+
+    // 立即购买
+    buyNow() {
+      const goods = {
+        goodsId: this.goodsDetail.goodsId,
+        goodsName: this.goodsDetail.goodsName,
+        goodsPrice: this.goodsDetail.goodsPrice,
+        goodsSmallLogo: this.goodsDetail.goodsSmallLogo,
+        goodsCount: 1,
+        goodsState: false
+      }
+      if(this.shippingAddress) {
+        Taro.navigateTo({
+          url: `${paths.COMMIT_ORDER}?goodsList=${JSON.stringify([goods])}`,
+        });
+      } else toast("请选择收货地址！", { icon: "error" })
     }
   },
 
