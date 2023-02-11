@@ -35,11 +35,6 @@ export default {
         shippingAddress(state) {
             return state.user.shippingAddress
         },
-        order(state) {
-            return state.user.cart.filter(cartItem => {
-                return cartItem.goodsState === true
-            })
-        },
         surplus(state) {
             return state.user.surplus;
         },
